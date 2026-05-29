@@ -10,20 +10,20 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 [data-theme="light"]{
-  --bg:#c7c7c7;--bg2:#d1d1d1;--surface:#474747;
-  --text:#474747;--text-sub:#d1d1d1;--accent:#89744d;
-  --overlay:#c7c7c7DD;--border:rgba(0,0,0,0.09);
+  --bg:#F8F5EF;--bg2:#F0EBE1;--surface:#EDEAE3;
+  --text:#1A1814;--text-sub:#6B6760;--accent:#C8A96E;
+  --overlay:#F8F5EFDD;--border:rgba(0,0,0,0.09);
 }
 [data-theme="dark"]{
-  --bg:#000000;--bg2:#161411;--surface:#1D1B17;
+  --bg:#0E0D0B;--bg2:#161411;--surface:#1D1B17;
   --text:#F0EBE1;--text-sub:#7A7570;--accent:#C8A96E;
-  --overlay:#000000E0;--border:rgba(255,255,255,0.07);
+  --overlay:#0E0D0BE0;--border:rgba(255,255,255,0.07);
 }
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;transition:background .55s,color .55s;overflow-x:hidden;cursor:none}
-.cursor{position:fixed;width:10px;height:10px;background:var(--text);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .35s cubic-bezier(.2,0,0,1),height .35s cubic-bezier(.2,0,0,1);mix-blend-mode:difference}
+.cursor{position:fixed;width:10px;height:10px;background:var(--text);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .35s cubic-bezier(.2,0,0,1),height .35s cubic-bezier(.2,0,0,1)}
 .cursor.hover{width:44px;height:44px}
 .cursor-ring{position:fixed;width:38px;height:38px;border:1px solid var(--text);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4;mix-blend-mode:difference}
-header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:26px 52px;background:var(--overlay);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background .55s,border-color .55s}
+header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:26px 52px;background:var(--overlay);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:border-color .55s}
 .logo{font-family:'DM Serif Display',serif;font-size:1.2rem;font-weight:700;letter-spacing:-.02em;color:var(--text);text-decoration:none;cursor:none}
 .logo em{font-style:italic;color:var(--accent)}
 .header-right{display:flex;align-items:center;gap:28px}
@@ -38,6 +38,18 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:
 .hero-left h1 em{font-style:italic;color:var(--accent)}
 .hero-right{max-width:300px;text-align:right;animation:fadeUp .9s .1s cubic-bezier(.2,0,0,1) both}
 .hero-right p{font-size:.82rem;line-height:1.75;color:var(--text-sub);letter-spacing:.02em}
+.search-container{padding:0 52px;margin-bottom:40px;animation:fadeUp .9s .15s cubic-bezier(.2,0,0,1) both}
+.search-wrapper{position:relative;max-width:540px}
+.search-input{width:100%;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:3px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;transition:border-color .35s,background .35s;cursor:text}
+.search-input::placeholder{color:var(--text-sub)}
+.search-input:focus{outline:none;border-color:var(--accent);background:var(--bg2)}
+.search-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--text-sub);pointer-events:none;font-size:.9rem}
+.categories-section{padding:0 52px;margin-bottom:48px;animation:fadeUp .9s .2s cubic-bezier(.2,0,0,1) both}
+.categories-title{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-sub);margin-bottom:16px;display:block}
+.categories-grid{display:flex;flex-wrap:wrap;gap:12px}
+.category-btn{padding:10px 20px;background:var(--surface);border:1px solid var(--border);border-radius:3px;color:var(--text);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:all .35s cubic-bezier(.2,0,0,1);white-space:nowrap}
+.category-btn:hover{border-color:var(--accent);background:var(--bg2)}
+.category-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
 .divider{height:1px;background:var(--border);margin:52px 52px 44px;transition:background .55s}
 .grid-label{display:flex;align-items:center;justify-content:space-between;padding:0 52px;margin-bottom:24px}
 .grid-label span{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-sub)}
@@ -47,7 +59,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:
 .pack-thumb{width:100%;aspect-ratio:4/3;overflow:hidden;position:relative}
 .pack-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .75s cubic-bezier(.2,0,0,1)}
 .pack-card:hover .pack-thumb img{transform:scale(1.06)}
-.thumb-placeholder{width:100%;height:100%;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-style:italic;font-size:.75rem;color:var(--text-sub);letter-spacing:.1em}
+.thumb-placeholder{width:100%;height:100%;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-style:italic;font-size:.75rem;color:var(--text-sub)}
 .card-overlay{position:absolute;inset:0;background:var(--overlay);opacity:0;transition:opacity .4s ease;display:flex;align-items:center;justify-content:center}
 .pack-card:hover .card-overlay{opacity:1}
 .view-label{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text);border:1px solid var(--text);padding:10px 22px;transform:translateY(10px);transition:transform .4s cubic-bezier(.2,0,0,1)}
@@ -56,11 +68,14 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:
 .pack-meta-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
 .pack-name{font-family:'DM Serif Display',serif;font-size:1rem;font-weight:700;color:var(--text);letter-spacing:-.01em}
 .pack-cat{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
-.pack-desc-short{font-size:.76rem;color:var(--text-sub);line-height:1.55}
+.pack-creator{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-sub);margin-top:4px}
+.pack-desc-short{font-size:.76rem;color:var(--text-sub);line-height:1.55;margin-top:6px}
+.no-results{text-align:center;padding:60px 52px;color:var(--text-sub)}
+.no-results p{font-size:.88rem;letter-spacing:.1em}
 #page-detail{display:none;min-height:100vh;opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s cubic-bezier(.2,0,0,1)}
 #page-detail.visible{opacity:1;transform:translateY(0)}
 .detail-inner{max-width:940px;margin:0 auto;padding:148px 52px 100px}
-.back-btn{display:inline-flex;align-items:center;gap:12px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-sub);cursor:none;border:none;background:none;margin-bottom:56px;transition:color .25s,gap .35s}
+.back-btn{display:inline-flex;align-items:center;gap:12px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-sub);cursor:none;border:none;background:none;margin-bottom:56px;transition:color .35s,gap .35s cubic-bezier(.2,0,0,1)}
 .back-btn:hover{color:var(--text);gap:20px}
 .back-arrow{width:32px;height:1px;background:currentColor;position:relative;flex-shrink:0;transition:width .35s cubic-bezier(.2,0,0,1)}
 .back-arrow::before{content:'';position:absolute;left:0;top:-3px;width:7px;height:7px;border-left:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
@@ -69,12 +84,13 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:
 .detail-title em{font-style:italic;color:var(--accent)}
 .detail-cat{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-sub);margin-bottom:48px;display:flex;align-items:center;gap:16px}
 .detail-cat::after{content:'';width:180px;height:1px;background:var(--border)}
+.detail-creator{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-sub);margin-bottom:32px}
 .video-wrap{width:100%;aspect-ratio:16/9;border-radius:3px;overflow:hidden;background:var(--surface);margin-bottom:40px}
 .video-wrap iframe{width:100%;height:100%;border:none;display:block}
 .video-placeholder-msg{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--text-sub);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
 .video-placeholder-msg svg{width:36px;height:36px;opacity:.25}
-.detail-desc{font-size:.88rem;line-height:1.85;color:var(--text-sub);max-width:540px;margin-bottom:48px}
-.dl-btn{display:inline-flex;align-items:center;gap:14px;background:var(--text);color:var(--bg);font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:16px 38px;border-radius:2px;cursor:none;transition:background .35s,color .35s,gap .35s,box-shadow .35s}
+.detail-desc{font-size:.88rem;line-height:1.85;color:var(--text-sub);max-width:540px;margin-bottom:48px;white-space:pre-wrap}
+.dl-btn{display:inline-flex;align-items:center;gap:14px;background:var(--text);color:var(--bg);font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:14px 28px;border:none;border-radius:3px;cursor:none;text-decoration:none;transition:all .35s cubic-bezier(.2,0,0,1)}
 .dl-btn:hover{background:var(--accent);color:#fff;gap:22px;box-shadow:0 8px 36px rgba(200,169,110,.28)}
 .dl-icon{width:14px;height:14px;flex-shrink:0}
 #page-home{transition:opacity .38s ease,transform .38s ease}
@@ -82,8 +98,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:
 footer{border-top:1px solid var(--border);padding:30px 52px;display:flex;align-items:center;justify-content:space-between;transition:border-color .55s}
 footer p{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-sub)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:768px){header{padding:18px 24px}.hero{padding:110px 24px 52px;flex-direction:column;gap:20px}.hero-right{text-align:left;max-width:100%}.divider{margin:40px 24px 32px}.grid-label{padding:0 24px}.packs-grid{padding:0 24px 80px;grid-template-columns:1fr 1fr;gap:1px}.detail-inner{padding:110px 24px 80px}footer{padding:24px;flex-direction:column;gap:8px;text-align:center}}
-@media(max-width:480px){.packs-grid{grid-template-columns:1fr}.hero-left h1{font-size:2.4rem}}
+@media(max-width:768px){header{padding:18px 24px}.hero{padding:110px 24px 52px;flex-direction:column;gap:20px}.hero-right{text-align:left;max-width:100%}.search-container{padding:0 24px}.categories-section{padding:0 24px}.divider{margin:40px 24px 32px}.grid-label{padding:0 24px}.categories-grid{gap:8px}.category-btn{padding:8px 14px;font-size:.65rem}.packs-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2px;padding:0 24px 80px}.detail-inner{padding:110px 24px 60px}}
+@media(max-width:480px){.packs-grid{grid-template-columns:1fr}.hero-left h1{font-size:2.4rem}.categories-grid{flex-direction:column}.category-btn{width:100%;text-align:center}}
 </style>
 </head>
 <body>
@@ -100,18 +116,33 @@ footer p{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:va
 <div id="page-home">
   <section class="hero">
     <div class="hero-left"><h1>Graphics<br/><em>Packs</em></h1></div>
-    <div class="hero-right"><p>Click on a pack to watch the presentation video and download the compressed file.</p></div>
+    <div class="hero-right"><p>Clique sur un pack pour découvrir la vidéo de présentation et télécharger le fichier compressé.</p></div>
   </section>
+  
+  <div class="search-container">
+    <div class="search-wrapper">
+      <input type="text" class="search-input" id="searchInput" placeholder="Rechercher un pack..."/>
+      <span class="search-icon">🔍</span>
+    </div>
+  </div>
+  
+  <div class="categories-section">
+    <span class="categories-title">Filtrer par :</span>
+    <div class="categories-grid" id="categoriesGrid"></div>
+  </div>
+  
   <div class="divider"></div>
   <div class="grid-label"><span id="gridCount"></span><span>↓ Explorer</span></div>
   <div class="packs-grid" id="packsGrid"></div>
-  <footer><p>© 2026 — Graphics Packs</p><p>By z0ib</p></footer>
+  <div id="noResults" class="no-results" style="display:none"><p>Aucun pack ne correspond à votre recherche</p></div>
+  <footer><p>© 2026 — Graphics Packs</p><p>Tous droits réservés</p></footer>
 </div>
 <div id="page-detail">
   <div class="detail-inner">
     <button class="back-btn" onclick="goHome()"><span class="back-arrow"></span>Retour</button>
     <h2 class="detail-title" id="detail-title"></h2>
     <div class="detail-cat" id="detail-cat"></div>
+    <div class="detail-creator" id="detail-creator"></div>
     <div class="video-wrap" id="detail-video"></div>
     <p class="detail-desc" id="detail-desc"></p>
     <a class="dl-btn" id="detail-dl" href="#" target="_blank">
@@ -124,63 +155,206 @@ footer p{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:va
 const packs = [
   {
     "id": "pack-1779045406604",
-    "name": "Smooth FREE | by SOUSHI",
-    "cat": "Graphics Pack",
+    "name": "Smooth FREE",
+    "creator": "SOUSHI",
+    "youtuber": "SOUSHI",
+    "category": "Graphics Pack",
     "desc": "Very good optimized smooth pack",
-    "fullDesc": "Info :\nMods & Plugins",
-    "image": "https://cdn.discordapp.com/attachments/1373620484515692607/1395918036577419345/PACK_FREE_SOUSHI.png?ex=6a1ad13a&is=6a197fba&hm=69bf5e92ea06bff5a8a9214552ac83aa3a0ba63827ae0845c7fe5372a15c6f05&",
+    "fullDesc": "Info :\n- Mods \n- Plugins",
+    "image": "https://cdn.discordapp.com/attachments/1373620484515692607/1395918036577419345/PACK_FREE_SOUSHI.png?ex=6a1ad13a&is=6a197fba&hm=69bf5e92ea06bff5a8a9214552ac83aa3a0ba63827ae0845c7fe5372a15",
     "video": "https://www.youtube.com/embed/vSNNYxTVVEo",
     "dl": "https://archive.org/download/pack-smooth-free-by-soushi/Pack%20smooth%20FREE%20by%20SOUSHI.rar"
   },
   {
-    "id": "pack-1780096643526",
-    "name": "Nouveau Pack",
-    "cat": "Catégorie",
-    "desc": "Description courte.",
-    "fullDesc": "Description complète du pack.",
+    "id": "pack-pvp-1",
+    "name": "Ultimate Combat",
+    "creator": "ProPlayer",
+    "youtuber": "ProPlayer Gaming",
+    "category": "PVP Packs",
+    "desc": "Enhanced combat animations and effects",
+    "fullDesc": "Pack PVP optimisé pour les combats :\n- Animations rapides\n- Effets sonores améliorés\n- Haute réactivité",
+    "image": "",
+    "video": "",
+    "dl": "#"
+  },
+  {
+    "id": "pack-sound-1",
+    "name": "Cinema Sound",
+    "creator": "AudioMaster",
+    "youtuber": "TechReviewer",
+    "category": "Sound Pack",
+    "desc": "Immersive 3D audio experience",
+    "fullDesc": "Pack sonore cinématique :\n- Spatialisation 3D\n- Compression dynamique\n- Clarity maximale",
+    "image": "",
+    "video": "",
+    "dl": "#"
+  },
+  {
+    "id": "pack-mods-1",
+    "name": "Gameplay Enhancer",
+    "creator": "DevMaster",
+    "youtuber": "DevMaster Channel",
+    "category": "Mods",
+    "desc": "Quality of life improvements",
+    "fullDesc": "Mods gameplay :\n- Nouvelles mécaniques\n- Interface améliorée\n- Performance optimisée",
     "image": "",
     "video": "",
     "dl": "#"
   }
 ];
-const grid = document.getElementById('packsGrid');
-document.getElementById('gridCount').textContent = packs.length + ' pack' + (packs.length>1?'s':'') + ' disponible' + (packs.length>1?'s':'');
-document.getElementById('packCountLabel').textContent = packs.length + ' Packs';
-packs.forEach(p => {
-  const thumb = p.image ? '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy"/>' : '<div class="thumb-placeholder">Aperçu à venir</div>';
-  const card = document.createElement('a');
-  card.className = 'pack-card'; card.href = '#';
-  card.innerHTML = '<div class="pack-thumb">' + thumb + '<div class="card-overlay"><span class="view-label">Voir le pack</span></div></div><div class="pack-meta"><div class="pack-meta-top"><span class="pack-name">' + p.name + '</span><span class="pack-cat">' + p.cat + '</span></div><p class="pack-desc-short">' + p.desc + '</p></div>';
-  card.addEventListener('click', e => { e.preventDefault(); openPack(p); });
-  grid.appendChild(card);
-});
+
+let filteredPacks = [...packs];
+let activeFilters = { category: null, search: '' };
+
+// Categories management
+const categoryTypes = [
+  { id: 'all', label: 'Tous les packs' },
+  { id: 'Graphics Pack', label: 'Graphics Pack' },
+  { id: 'PVP Packs', label: 'PVP Packs' },
+  { id: 'Sound Pack', label: 'Sound Pack' },
+  { id: 'Mods', label: 'Mods' }
+];
+
+// Get unique creators and youtubers
+const creators = [...new Set(packs.map(p => p.creator))].sort();
+const youtubers = [...new Set(packs.map(p => p.youtuber))].sort();
+
+const allCategories = [
+  ...categoryTypes,
+  ...creators.map(c => ({ id: `creator-${c}`, label: `Par ${c}` })),
+  ...youtubers.map(y => ({ id: `youtuber-${y}`, label: `YouTubeur: ${y}` }))
+];
+
+// Render categories
+function renderCategories() {
+  const grid = document.getElementById('categoriesGrid');
+  grid.innerHTML = '';
+  allCategories.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'category-btn' + (activeFilters.category === cat.id ? ' active' : '');
+    btn.textContent = cat.label;
+    btn.addEventListener('click', () => filterByCategory(cat.id));
+    grid.appendChild(btn);
+  });
+}
+
+// Filter by category
+function filterByCategory(catId) {
+  activeFilters.category = activeFilters.category === catId ? null : catId;
+  applyFilters();
+}
+
+// Search function
+function filterBySearch(query) {
+  activeFilters.search = query.toLowerCase();
+  applyFilters();
+}
+
+// Apply all filters
+function applyFilters() {
+  filteredPacks = packs.filter(p => {
+    let matchCategory = true;
+    let matchSearch = true;
+
+    if (activeFilters.category) {
+      if (activeFilters.category === 'all') {
+        matchCategory = true;
+      } else if (activeFilters.category.startsWith('creator-')) {
+        const creator = activeFilters.category.replace('creator-', '');
+        matchCategory = p.creator === creator;
+      } else if (activeFilters.category.startsWith('youtuber-')) {
+        const youtuber = activeFilters.category.replace('youtuber-', '');
+        matchCategory = p.youtuber === youtuber;
+      } else {
+        matchCategory = p.category === activeFilters.category;
+      }
+    }
+
+    if (activeFilters.search) {
+      matchSearch = p.name.toLowerCase().includes(activeFilters.search) ||
+                   p.desc.toLowerCase().includes(activeFilters.search) ||
+                   p.creator.toLowerCase().includes(activeFilters.search);
+    }
+
+    return matchCategory && matchSearch;
+  });
+
+  renderPacks();
+  renderCategories();
+}
+
+// Render packs
+function renderPacks() {
+  const grid = document.getElementById('packsGrid');
+  const noResults = document.getElementById('noResults');
+  
+  grid.innerHTML = '';
+  
+  if (filteredPacks.length === 0) {
+    noResults.style.display = 'block';
+    document.getElementById('gridCount').textContent = '0 pack';
+  } else {
+    noResults.style.display = 'none';
+    document.getElementById('gridCount').textContent = filteredPacks.length + ' pack' + (filteredPacks.length > 1 ? 's' : '') + ' disponible' + (filteredPacks.length > 1 ? 's' : '');
+  }
+
+  filteredPacks.forEach((p, idx) => {
+    const thumb = p.image ? '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy"/>' : '<div class="thumb-placeholder">Aperçu à venir</div>';
+    const card = document.createElement('a');
+    card.className = 'pack-card';
+    card.href = '#';
+    card.style.animationDelay = (idx * 0.08) + 's';
+    card.innerHTML = '<div class="pack-thumb">' + thumb + '<div class="card-overlay"><span class="view-label">Voir le pack</span></div></div><div class="pack-meta"><div class="pack-meta-top"><span class="pack-name">' + p.name + '</span><span class="pack-cat">' + p.category + '</span></div><div class="pack-creator">Par ' + p.creator + '</div><p class="pack-desc-short">' + p.desc + '</p></div>';
+    card.addEventListener('click', e => { e.preventDefault(); openPack(p); });
+    grid.appendChild(card);
+  });
+}
+
+// Open pack detail
 function openPack(p) {
   const home = document.getElementById('page-home'), detail = document.getElementById('page-detail');
   const parts = p.name.split(' ');
   document.getElementById('detail-title').innerHTML = parts.length > 1 ? parts[0] + ' <em>' + parts.slice(1).join(' ') + '</em>' : '<em>' + p.name + '</em>';
-  document.getElementById('detail-cat').textContent = p.cat;
+  document.getElementById('detail-cat').textContent = p.category;
+  document.getElementById('detail-creator').textContent = 'Par ' + p.creator + (p.youtuber !== p.creator ? ' • YouTubeur: ' + p.youtuber : '');
   document.getElementById('detail-desc').textContent = p.fullDesc;
   document.getElementById('detail-dl').href = p.dl;
   const vw = document.getElementById('detail-video');
-  vw.innerHTML = p.video ? '<iframe src="' + p.video + '" allowfullscreen allow="autoplay;encrypted-media"></iframe>' : '<div class="video-placeholder-msg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg><span>Vidéo à venir</span></div>';
+  vw.innerHTML = p.video ? '<iframe src="' + p.video + '" allowfullscreen allow="autoplay;encrypted-media"></iframe>' : '<div class="video-placeholder-msg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zm-7 0c0 .83-.67 1.5-1.5 1.5S5 11.83 5 11s.67-1.5 1.5-1.5 1.5.67 1.5 1.5z"/></svg><span>Vidéo à venir</span></div>';
   home.classList.add('hidden');
   setTimeout(() => { home.style.display='none'; detail.style.display='block'; window.scrollTo(0,0); requestAnimationFrame(() => requestAnimationFrame(() => detail.classList.add('visible'))); }, 340);
 }
+
+// Go home
 function goHome() {
   const home = document.getElementById('page-home'), detail = document.getElementById('page-detail');
   detail.classList.remove('visible');
   setTimeout(() => { detail.style.display='none'; home.style.display=''; home.classList.remove('hidden'); window.scrollTo(0,0); }, 420);
 }
+
+// Theme toggle
 document.getElementById('themeToggle').addEventListener('click', () => {
   const h = document.documentElement; const d = h.getAttribute('data-theme')==='dark';
   h.setAttribute('data-theme', d?'light':'dark');
   document.getElementById('themeLabel').textContent = d?'Clair':'Sombre';
 });
+
+// Search input
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  filterBySearch(e.target.value);
+});
+
+// Cursor tracking
 const cursor = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
 (function animateRing(){ rx+=(mx-rx)*.11; ry+=(my-ry)*.11; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animateRing); })();
-document.querySelectorAll('a,button,.theme-toggle,.pack-card').forEach(el => { el.addEventListener('mouseenter',()=>cursor.classList.add('hover')); el.addEventListener('mouseleave',()=>cursor.classList.remove('hover')); });
+document.querySelectorAll('a,button,.theme-toggle,.pack-card,.search-input,.category-btn').forEach(el => { el.addEventListener('mouseenter',()=>cursor.classList.add('hover')); el.addEventListener('mouseleave',()=>cursor.classList.remove('hover')); });
+
+// Initial render
+document.getElementById('packCountLabel').textContent = packs.length + ' Packs';
+renderCategories();
+renderPacks();
 </script>
 </body>
 </html>
