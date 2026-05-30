@@ -23,7 +23,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .cursor{position:fixed;width:10px;height:10px;background:var(--text);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .35s cubic-bezier(.2,0,0,1),height .35s cubic-bezier(.2,0,0,1)}
 .cursor.hover{width:44px;height:44px}
 .cursor-ring{position:fixed;width:38px;height:38px;border:1px solid var(--text);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4;mix-blend-mode:difference}
-header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:26px 52px;background:var(--overlay);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:border-color .55s}
+header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:26px 52px;background:var(--overlay);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
 .logo{font-family:'DM Serif Display',serif;font-size:1.2rem;font-weight:700;letter-spacing:-.02em;color:var(--text);text-decoration:none;cursor:none}
 .logo em{font-style:italic;color:var(--accent)}
 .header-right{display:flex;align-items:center;gap:28px}
@@ -40,14 +40,14 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:
 .hero-right p{font-size:.82rem;line-height:1.75;color:var(--text-sub);letter-spacing:.02em}
 .search-container{padding:0 52px;margin-bottom:40px;animation:fadeUp .9s .15s cubic-bezier(.2,0,0,1) both}
 .search-wrapper{position:relative;max-width:540px}
-.search-input{width:100%;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:3px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;transition:border-color .35s,background .35s;cursor:text}
+.search-input{width:100%;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:3px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;transition:border-color .3s,background .3s}
 .search-input::placeholder{color:var(--text-sub)}
 .search-input:focus{outline:none;border-color:var(--accent);background:var(--bg2)}
 .search-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--text-sub);pointer-events:none;font-size:.9rem}
 .categories-section{padding:0 52px;margin-bottom:48px;animation:fadeUp .9s .2s cubic-bezier(.2,0,0,1) both}
 .categories-title{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-sub);margin-bottom:16px;display:block}
 .categories-grid{display:flex;flex-wrap:wrap;gap:12px}
-.category-btn{padding:10px 20px;background:var(--surface);border:1px solid var(--border);border-radius:3px;color:var(--text);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:all .35s cubic-bezier(.2,0,0,1);white-space:nowrap}
+.category-btn{padding:10px 20px;background:var(--surface);border:1px solid var(--border);border-radius:3px;color:var(--text);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:background .3s,border-color .3s,color .3s}
 .category-btn:hover{border-color:var(--accent);background:var(--bg2)}
 .category-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
 .divider{height:1px;background:var(--border);margin:52px 52px 44px;transition:background .55s}
@@ -75,7 +75,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:
 #page-detail{display:none;min-height:100vh;opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s cubic-bezier(.2,0,0,1)}
 #page-detail.visible{opacity:1;transform:translateY(0)}
 .detail-inner{max-width:940px;margin:0 auto;padding:148px 52px 100px}
-.back-btn{display:inline-flex;align-items:center;gap:12px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-sub);cursor:none;border:none;background:none;margin-bottom:56px;transition:color .35s,gap .35s cubic-bezier(.2,0,0,1)}
+.back-btn{display:inline-flex;align-items:center;gap:12px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-sub);cursor:none;border:none;background:none;margin-bottom:56px;transition:gap .35s}
 .back-btn:hover{color:var(--text);gap:20px}
 .back-arrow{width:32px;height:1px;background:currentColor;position:relative;flex-shrink:0;transition:width .35s cubic-bezier(.2,0,0,1)}
 .back-arrow::before{content:'';position:absolute;left:0;top:-3px;width:7px;height:7px;border-left:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
@@ -90,7 +90,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:
 .video-placeholder-msg{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--text-sub);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
 .video-placeholder-msg svg{width:36px;height:36px;opacity:.25}
 .detail-desc{font-size:.88rem;line-height:1.85;color:var(--text-sub);max-width:540px;margin-bottom:48px;white-space:pre-wrap}
-.dl-btn{display:inline-flex;align-items:center;gap:14px;background:var(--text);color:var(--bg);font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:14px 28px;border:none;border-radius:3px;cursor:none;text-decoration:none;transition:all .35s cubic-bezier(.2,0,0,1)}
+.dl-btn{display:inline-flex;align-items:center;gap:14px;background:var(--text);color:var(--bg);font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:12px 28px;text-decoration:none;cursor:none;transition:background .3s,gap .35s,box-shadow .3s}
 .dl-btn:hover{background:var(--accent);color:#fff;gap:22px;box-shadow:0 8px 36px rgba(200,169,110,.28)}
 .dl-icon{width:14px;height:14px;flex-shrink:0}
 #page-home{transition:opacity .38s ease,transform .38s ease}
@@ -98,7 +98,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:
 footer{border-top:1px solid var(--border);padding:30px 52px;display:flex;align-items:center;justify-content:space-between;transition:border-color .55s}
 footer p{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-sub)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:768px){header{padding:18px 24px}.hero{padding:110px 24px 52px;flex-direction:column;gap:20px}.hero-right{text-align:left;max-width:100%}.search-container{padding:0 24px}.categories-section{padding:0 24px}.divider{margin:40px 24px 32px}.grid-label{padding:0 24px}.categories-grid{gap:8px}.category-btn{padding:8px 14px;font-size:.65rem}.packs-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2px;padding:0 24px 80px}.detail-inner{padding:110px 24px 60px}}
+@media(max-width:768px){header{padding:18px 24px}.hero{padding:110px 24px 52px;flex-direction:column;gap:20px}.hero-right{text-align:left;max-width:100%}.search-container{padding:0 24px}.categories-section{padding:0 24px}.divider{margin:40px 24px}.grid-label{padding:0 24px}.packs-grid{padding:0 24px 80px}.detail-inner{padding:110px 24px 60px}}
 @media(max-width:480px){.packs-grid{grid-template-columns:1fr}.hero-left h1{font-size:2.4rem}.categories-grid{flex-direction:column}.category-btn{width:100%;text-align:center}}
 </style>
 </head>
@@ -161,7 +161,7 @@ const packs = [
     "category": "Graphics Pack",
     "desc": "Very good optimized smooth pack",
     "fullDesc": "Info :\n- Mods \n- Plugins",
-    "image": "https://cdn.discordapp.com/attachments/1373620484515692607/1395918036577419345/PACK_FREE_SOUSHI.png?ex=6a1ad13a&is=6a197fba&hm=69bf5e92ea06bff5a8a9214552ac83aa3a0ba63827ae0845c7fe5372a15",
+    "image": "https://cdn.discordapp.com/attachments/1373620484515692607/1395918036577419345/PACK_FREE_SOUSHI.png?ex=6a1ad13a&is=6a197fba&hm=69bf5e92ea06bff5a8a9214552ac83aa3a0ba63827ae0845c7fe5372a15c6f9",
     "video": "https://www.youtube.com/embed/vSNNYxTVVEo",
     "dl": "https://archive.org/download/pack-smooth-free-by-soushi/Pack%20smooth%20FREE%20by%20SOUSHI.rar"
   },
@@ -304,7 +304,7 @@ function renderPacks() {
     card.className = 'pack-card';
     card.href = '#';
     card.style.animationDelay = (idx * 0.08) + 's';
-    card.innerHTML = '<div class="pack-thumb">' + thumb + '<div class="card-overlay"><span class="view-label">Voir le pack</span></div></div><div class="pack-meta"><div class="pack-meta-top"><span class="pack-name">' + p.name + '</span><span class="pack-cat">' + p.category + '</span></div><div class="pack-creator">Par ' + p.creator + '</div><p class="pack-desc-short">' + p.desc + '</p></div>';
+    card.innerHTML = '<div class="pack-thumb">' + thumb + '<div class="card-overlay"><span class="view-label">Voir le pack</span></div></div><div class="pack-meta"><div class="pack-meta-top"><span class="pack-name">' + p.name + '</span><span class="pack-cat">' + p.category + '</span></div><span class="pack-creator">Par ' + p.creator + '</span><p class="pack-desc-short">' + p.desc + '</p></div>';
     card.addEventListener('click', e => { e.preventDefault(); openPack(p); });
     grid.appendChild(card);
   });
@@ -320,7 +320,7 @@ function openPack(p) {
   document.getElementById('detail-desc').textContent = p.fullDesc;
   document.getElementById('detail-dl').href = p.dl;
   const vw = document.getElementById('detail-video');
-  vw.innerHTML = p.video ? '<iframe src="' + p.video + '" allowfullscreen allow="autoplay;encrypted-media"></iframe>' : '<div class="video-placeholder-msg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zm-7 0c0 .83-.67 1.5-1.5 1.5S5 11.83 5 11s.67-1.5 1.5-1.5 1.5.67 1.5 1.5z"/></svg><span>Vidéo à venir</span></div>';
+  vw.innerHTML = p.video ? '<iframe src="' + p.video + '" allowfullscreen allow="autoplay;encrypted-media"></iframe>' : '<div class="video-placeholder-msg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>Vidéo à venir</div>';
   home.classList.add('hidden');
   setTimeout(() => { home.style.display='none'; detail.style.display='block'; window.scrollTo(0,0); requestAnimationFrame(() => requestAnimationFrame(() => detail.classList.add('visible'))); }, 340);
 }
