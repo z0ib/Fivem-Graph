@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Free Community Packs — Packs Graphiques</title>
+<title>Packs — Packs Graphiques</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM%20Serif%20Display:ital,wght@0,400;0,700;1,400&family=DM%20Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 [data-theme="light"]{
-  --bg:#c7c7c7;--bg2:#d1d1d1;--surface:#474747;
-  --text:#474747;--text-sub:#d1d1d1;--accent:#89744d;
-  --overlay:#c7c7c7DD;--border:rgba(0,0,0,0.09);
+  --bg:#F8F5EF;--bg2:#F0EBE1;--surface:#EDEAE3;
+  --text:#1A1814;--text-sub:#6B6760;--accent:#C8A96E;
+  --overlay:#F8F5EFDD;--border:rgba(0,0,0,0.09);
 }
 [data-theme="dark"]{
-  --bg:#000000;--bg2:#161411;--surface:#1D1B17;
+  --bg:#0E0D0B;--bg2:#161411;--surface:#1D1B17;
   --text:#F0EBE1;--text-sub:#7A7570;--accent:#C8A96E;
-  --overlay:#000000E0;--border:rgba(255,255,255,0.07);
+  --overlay:#0E0D0BE0;--border:rgba(255,255,255,0.07);
 }
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;transition:background .55s,color .55s;overflow-x:hidden;cursor:none}
 .cursor{position:fixed;width:10px;height:10px;background:var(--text);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .35s cubic-bezier(.2,0,0,1),height .35s cubic-bezier(.2,0,0,1);mix-blend-mode:difference}
@@ -90,22 +90,22 @@ footer p{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:va
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <header>
-  <a class="logo" href="#" onclick="goHome();return false;">Free Community Packs<em>.</em></a>
+  <a class="logo" href="#" onclick="goHome();return false;">Packs<em>.</em></a>
   <div class="header-right">
     <span class="pack-count" id="packCountLabel"></span>
-    <span class="theme-label" id="themeLabel">Sombre</span>
+    <span class="theme-label" id="themeLabel">Clair</span>
     <div class="theme-toggle" id="themeToggle"></div>
   </div>
 </header>
 <div id="page-home">
   <section class="hero">
-    <div class="hero-left"><h1>Graphics<br/><em>Packs</em></h1></div>
-    <div class="hero-right"><p>Click on a pack to watch the presentation video and download the compressed file.</p></div>
+    <div class="hero-left"><h1>Mes packs<br/><em>graphiques.</em></h1></div>
+    <div class="hero-right"><p>Clique sur un pack pour découvrir la vidéo de présentation et télécharger le fichier compressé.</p></div>
   </section>
   <div class="divider"></div>
   <div class="grid-label"><span id="gridCount"></span><span>↓ Explorer</span></div>
   <div class="packs-grid" id="packsGrid"></div>
-  <footer><p>© 2026 — Graphics Packs</p><p>By z0ib</p></footer>
+  <footer><p>© 2025 — Packs Graphiques</p><p>Tous droits réservés</p></footer>
 </div>
 <div id="page-detail">
   <div class="detail-inner">
@@ -123,21 +123,41 @@ footer p{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:va
 <script>
 const packs = [
   {
-    "id": "pack-1779045406604",
-    "name": "Smooth FREE | by SOUSHI",
-    "cat": "Graphics Pack",
-    "desc": "Very good optimized smooth pack",
-    "fullDesc": "Info :\nMods & Plugins",
-    "image": "https://cdn.discordapp.com/attachments/1373620484515692607/1395918036577419345/PACK_FREE_SOUSHI.png?ex=6a1ad13a&is=6a197fba&hm=69bf5e92ea06bff5a8a9214552ac83aa3a0ba63827ae0845c7fe5372a15c6f05&",
-    "video": "https://www.youtube.com/embed/vSNNYxTVVEo",
-    "dl": "https://archive.org/download/pack-smooth-free-by-soushi/Pack%20smooth%20FREE%20by%20SOUSHI.rar"
+    "id": "pack-3",
+    "name": "Pack Motion",
+    "cat": "Animation",
+    "desc": "Intros, transitions et overlays animés pour tes vidéos.",
+    "fullDesc": "Pack d'animations clé-en-main : intros, outros, lower thirds, transitions. Fichiers After Effects et exports vidéo inclus.",
+    "image": "",
+    "video": "",
+    "dl": "#"
   },
   {
-    "id": "pack-1780096643526",
-    "name": "Nouveau Pack",
-    "cat": "Catégorie",
-    "desc": "Description courte.",
-    "fullDesc": "Description complète du pack.",
+    "id": "pack-4",
+    "name": "Pack Typo",
+    "cat": "Typographie",
+    "desc": "Sélection de polices et paires typographiques soignées.",
+    "fullDesc": "Typographies libres de droits pour usage commercial, avec guide d'association et exemples d'application pratiques.",
+    "image": "",
+    "video": "",
+    "dl": "#"
+  },
+  {
+    "id": "pack-5",
+    "name": "Pack Icônes",
+    "cat": "UI / Éléments",
+    "desc": "800+ icônes cohérentes en SVG et PNG haute qualité.",
+    "fullDesc": "Bibliothèque complète en styles outline, filled et duotone. SVG vectoriel + PNG 2x. Catégorisées et prêtes à l'emploi.",
+    "image": "",
+    "video": "",
+    "dl": "#"
+  },
+  {
+    "id": "pack-6",
+    "name": "Pack Palettes",
+    "cat": "Identité Visuelle",
+    "desc": "50 palettes de couleurs professionnelles prêtes à l'emploi.",
+    "fullDesc": "Palettes construites selon les règles de l'harmonie chromatique. Fichiers Figma, Adobe Swatch et codes HEX/RGB/CMJN fournis.",
     "image": "",
     "video": "",
     "dl": "#"
