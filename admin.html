@@ -242,7 +242,14 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 3px rgba(200,169,110,0.08);
 }
 textarea { resize: vertical; min-height: 80px; }
-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2372717A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 30px; }
+select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2372717A' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+
+input[type="color"] {
+  padding: 4px 6px;
+  height: 42px;
+  cursor: pointer;
+  border-radius: 6px;
+}
 
 /* ─── PACKS LIST ─── */
 .packs-list { display: flex; flex-direction: column; gap: 12px; }
@@ -439,7 +446,7 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
       Créateurs
     </button>
     <button class="nav-item" onclick="switchTab('youtubers', this)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 002.46 19.54c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.33 29 29 0 00-.46-5.33zM9.75 15.02l5.75-3.27-5.75-3.27z"/></svg>
       YouTubeurs
     </button>
   </div>
@@ -612,7 +619,7 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 ══════════════════════════════════════════════════════ */
 let state = {
   packs: [
-    { id:'pack-1', name:'Smooth FREE', creator:'SOUSHI', youtuber:'SOUSHI', category:'Graphics Pack', desc:'Very good optimized smooth pack', fullDesc:'Info :\n- Mods \n- Plugins', image:'https://cdn.discordapp.com/attachments/1373620484515692607/1395918036577419345/PACK_FREE_SOUSHI.png', video:'https://www.youtube.com/embed/vSNNYxTVVEo', dl:'https://archive.org/download/pack-smooth-free-by-soushi/Pack%20smooth%20FREE%20by%20SOUSHI.rar' },
+    { id:'pack-1', name:'Smooth FREE', creator:'SOUSHI', youtuber:'SOUSHI', category:'Graphics Pack', desc:'Very good optimized smooth pack', fullDesc:'Info :\n- Mods \n- Plugins', image:'https://cdn.example.com/pack1.jpg', video:'https://www.youtube.com/embed/dQw4w9WgXcQ', dl:'https://example.com/pack1.rar' },
     { id:'pack-2', name:'Ultimate Combat', creator:'ProPlayer', youtuber:'ProPlayer Gaming', category:'PVP Packs', desc:'Enhanced combat animations', fullDesc:'Pack PVP optimisé', image:'', video:'', dl:'#' },
     { id:'pack-3', name:'Cinema Sound', creator:'AudioMaster', youtuber:'TechReviewer', category:'Sound Pack', desc:'3D audio experience', fullDesc:'Pack sonore cinématique', image:'', video:'', dl:'#' },
     { id:'pack-4', name:'Gameplay Enhancer', creator:'DevMaster', youtuber:'DevMaster Channel', category:'Mods', desc:'Quality of life improvements', fullDesc:'Mods gameplay', image:'', video:'', dl:'#' }
@@ -754,7 +761,7 @@ function updatePack(i, key, val) {
 function addPack() {
   const id = 'pack-' + Date.now();
   state.packs.push({
-    id, name:'Nouveau pack', creator:state.creators[0] || 'Créateur', youtuber:state.youtubers[0] || 'YouTubeur', category:state.categories[0] || 'Catégorie', desc:'', fullDesc:'', image:'', video:'', dl:''
+    id, name:'Nouveau pack', creator:state.creators[0] || 'Créateur', youtuber:state.youtubers[0] || 'YouTubeur', category:state.categories[0] || 'Catégorie', desc:'', fullDesc:'', image:'', video:'', dl:'#'
   });
   renderPacks();
 }
