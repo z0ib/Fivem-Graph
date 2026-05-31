@@ -20,7 +20,6 @@ html{scroll-behavior:smooth}
   --overlay:#0E0D0BE0;--border:rgba(255,255,255,0.07);
 }
 
-/* ── FOND ANIMÉ — couleurs contrôlées par JS depuis localStorage ── */
 :root {
   --bg-canvas: #080808;
   --particle-color: 255,255,255;
@@ -29,7 +28,6 @@ html{scroll-behavior:smooth}
   --center-word-color: 255,255,255;
 }
 
-/* Canvas fond fixe permanent */
 #bgCanvas {
   position: fixed;
   inset: 0;
@@ -37,7 +35,6 @@ html{scroll-behavior:smooth}
   pointer-events: none;
 }
 
-/* Grain texture */
 .bg-grain {
   position: fixed;
   inset: 0;
@@ -53,17 +50,14 @@ html{scroll-behavior:smooth}
   50%{background-position:20% -5%}75%{background-position:-5% 20%}100%{background-position:10% 5%}
 }
 
-/* Tout le contenu par-dessus le fond */
 body {
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   overflow-x: hidden;
   cursor: none;
-  /* Pas de background sur body — le canvas fait le fond */
 }
 
-/* Header avec backdrop semi-transparent */
 header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -79,7 +73,6 @@ header {
   transition: background .55s, border-color .55s;
 }
 
-/* Le reste du contenu est au-dessus du canvas (z-index > 1) */
 #page-home, #page-detail, header {
   position: relative;
   z-index: 10;
@@ -152,7 +145,6 @@ footer p{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:va
 </head>
 <body>
 
-<!-- ═══ FOND ANIMÉ PERMANENT ═══ -->
 <canvas id="bgCanvas"></canvas>
 <div class="bg-grain"></div>
 
@@ -233,9 +225,6 @@ const packs = [
   }
 ];
 
-/* ═══════════════════════════════════════════
-   FOND ANIMÉ — réagit au thème clair/sombre
-═══════════════════════════════════════════ */
 (function initBackground() {
   const defaultDark  = { bgColor:'#080808', particleR:255, particleG:255, particleB:255, gridR:255, gridG:255, gridB:255 };
   const defaultLight = { bgColor:'#F2F2F2', particleR:17,  particleG:17,  particleB:17,  gridR:17,  gridG:17,  gridB:17  };
@@ -245,7 +234,6 @@ const packs = [
     const saved = localStorage.getItem('bgConfig');
     if (saved) {
       const parsed = JSON.parse(saved);
-      // Support ancien format plat
       if (parsed.dark) cfgAll = parsed;
       else cfgAll.dark = Object.assign({}, defaultDark, parsed);
     }
@@ -286,20 +274,17 @@ const packs = [
     ctx.fillStyle = c.bgColor;
     ctx.fillRect(0, 0, W, H);
 
-    // Vignette centre
     const g = ctx.createRadialGradient(mx,my,0,mx,my,Math.max(W,H)*.6);
     g.addColorStop(0, `rgba(${pr},${pg},${pb},0.03)`);
     g.addColorStop(1, `rgba(${pr},${pg},${pb},0)`);
     ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
 
-    // Scanlines
     [((t*18)%H),((t*18+H*.4)%H)].forEach(y => {
       ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y);
       ctx.strokeStyle = `rgba(${gr},${gg},${gb},0.018)`;
       ctx.lineWidth = 1; ctx.stroke();
     });
 
-    // Grille
     const cw=W/GCOLS, ch=H/GROWS, RAD=230, FORCE=14;
     ctx.strokeStyle = `rgba(${gr},${gg},${gb},0.045)`; ctx.lineWidth = .6;
     for(let r=0;r<=GROWS;r++){
@@ -321,7 +306,6 @@ const packs = [
       } ctx.stroke();
     }
 
-    // Particules
     PTS.forEach(p => {
       p.x+=p.vx; p.y+=p.vy;
       if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
@@ -349,7 +333,6 @@ const packs = [
   document.addEventListener('mousemove', e => { mouse.x=e.clientX; mouse.y=e.clientY; });
 })();
 
-/* ═══ PACKS ═══ */
 const grid = document.getElementById('packsGrid');
 document.getElementById('gridCount').textContent = packs.length + ' pack' + (packs.length>1?'s':'') + ' disponible' + (packs.length>1?'s':'');
 document.getElementById('packCountLabel').textContent = packs.length + ' Packs';
